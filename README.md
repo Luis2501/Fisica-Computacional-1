@@ -2,16 +2,11 @@
 
 Programas de la clase física computacional 1, FCFM, UAdeC.
 
-En cada tema se realizó el programa correspondiente en tres lenguajes de programación:   
+Cada tema cuenta con un script y un GIF de simulación. Los script cuenta con dos funciones.
 
-- Python
-- C++
-- Fortran  
+- Grafica
+- Simulacion
 
-Cada carpeta contiene los siguientes archivos
+De esta manera la simulación puede rehacerse con los parámetros que guste, llamando la función Simulacion() y ejecutando el script. 
 
-| Lenguaje      | Principal     | Datos                |
-| ------------- |:-------------:| --------------------:|
-| Python        | Nombre.py     | None                 |
-| C++           | Nombre.cpp    | Solucion_C++.dat     |
-| Fortran       | Nombre.f90    | Solucion_Fortran.dat |
+

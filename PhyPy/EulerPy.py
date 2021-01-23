@@ -3,11 +3,12 @@ Luis Eduardo Sánchez González
 
 Miercoles 2 de diciembre de 2020
 """
+from numpy import zeros
 
 class Euler():
 
 	def Metodo_Euler(self, t, tf, dt, posicion):
-	
+
 		self.tiempo.append(t)
 		self.Posicion.append(posicion)
 
@@ -41,12 +42,14 @@ class Euler():
 
 			velocidad = velocidad + (aceleracion)*dt			
 			posicion = posicion + (velocidad)*dt
-
+			
 			self.Posicion.append(posicion)
 			self.Velocidad.append(velocidad)
 
 			t += dt
 			self.tiempo.append(t)
+			
+			
 
 		R = lambda m: [self.Posicion[i][m] for i in range(len(self.Posicion))]
 		V = lambda m: [self.Velocidad[i][m] for i in range(len(self.Velocidad))]

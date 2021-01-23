@@ -1,5 +1,5 @@
 """
-Caida libre (Python)
+Caida libre 
 
 Luis Eduardo Sánchez González
 
@@ -7,8 +7,40 @@ Facultad de Ciencias Físico Matemáticas
 Física Computacional
 """
 
+def Grafica():
+
+	plt.title("Caida libre")
+	plt.plot(Caida_Libre.tiempo, Caida_Libre.y, label = r"$y(t)$")
+	plt.xlabel(r"tiempo (s)")
+	plt.ylabel(r"Posicion (m)")
+	plt.legend()
+	plt.grid()
+	plt.show()
+
+def Simulacion():
+	
+	tiempo = Caida_Libre.tiempo
+
+	fig = plt.figure()
+	ax = fig.gca()
+
+	def update(i):
+
+		ax.clear()
+		plt.title("Caida libre")
+		plt.plot(Caida_Libre.x[i], Caida_Libre.y[i] ,"ro" , color = "blue", label = "t = " + str(round(tiempo[i],3)) + " s")
+		plt.ylim(0,max(Caida_Libre.y))
+		plt.legend()
+		plt.grid()
+
+	ani = animation.FuncAnimation(fig, update, range(len(tiempo)), interval = 1)
+	#ani.save('Caida_libre.gif', writer='imagemagick', fps=100)					#Guardar la simulación
+	plt.show()
+
+
 if __name__=="__main__":
 
+	import matplotlib.animation as animation
 	import matplotlib.pyplot as plt
 	import numpy as np
 	import sys
@@ -23,15 +55,14 @@ if __name__=="__main__":
 	posicion = np.array([0,h,0])
 	velocidad = np.array([0,0,0])
 
-	Aceleracion = ["0", str(-g), "0"]		#Definimos la aceleración, solamente actua en la componente "y"				
+	Aceleracion = ["0", str(-g), "0"]		#Definimos la aceleración, solamente en la componente "y"				
+
+	print("Caida libre")
 
 	Caida_Libre = Sistema_fisico(Aceleracion)
 	Caida_Libre.Metodo_Euler_Cromer(t, tf, dt, posicion, velocidad)
 
-	plt.title("Caida libre")
-	plt.plot(Caida_Libre.tiempo, Caida_Libre.y, label = r"$y(t)$")
-	plt.xlabel(r"tiempo (s)")
-	plt.ylabel(r"Posicion (m)")
-	plt.legend()
-	plt.grid()
-	plt.show()
+	print(Caida_Libre)
+
+	Grafica()
+	#Simulacion()
