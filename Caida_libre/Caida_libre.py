@@ -7,18 +7,8 @@ Facultad de Ciencias Físico Matemáticas
 Física Computacional
 """
 
-def Grafica():
+def Visualizacion(Grafica = False, Simulacion = False):
 
-	plt.title("Caida libre")
-	plt.plot(Caida_Libre.tiempo, Caida_Libre.y, label = r"$y(t)$")
-	plt.xlabel(r"tiempo (s)")
-	plt.ylabel(r"Posicion (m)")
-	plt.legend()
-	plt.grid()
-	plt.show()
-
-def Simulacion():
-	
 	tiempo = Caida_Libre.tiempo
 
 	fig = plt.figure()
@@ -33,8 +23,20 @@ def Simulacion():
 		plt.legend()
 		plt.grid()
 
-	ani = animation.FuncAnimation(fig, update, range(len(tiempo)), interval = 1)
-	#ani.save('Caida_libre.gif', writer='imagemagick', fps=100)					#Guardar la simulación
+	if Grafica == True:
+
+		plt.title("Caida libre")
+		plt.plot(Caida_Libre.tiempo, Caida_Libre.y, label = r"$y(t)$")
+		plt.xlabel(r"tiempo (s)")
+		plt.ylabel(r"Posicion (m)")
+		plt.legend()
+		plt.grid()
+
+	elif Simulacion == True:
+
+		ani = animation.FuncAnimation(fig, update, range(len(tiempo)), interval = 1)
+		#ani.save('Caida_libre.gif', writer='imagemagick', fps=100)			#Guardar la simulación
+
 	plt.show()
 
 
@@ -64,5 +66,4 @@ if __name__=="__main__":
 
 	print(Caida_Libre)
 
-	Grafica()
-	#Simulacion()
+	Visualizacion(Grafica=True)
