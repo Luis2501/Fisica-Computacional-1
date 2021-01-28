@@ -3,14 +3,13 @@ Luis Eduardo Sánchez González
 
 Miercoles 2 de diciembre de 2020
 """
-from numpy import zeros
 
 class Euler():
 
 	def Metodo_Euler(self, t, tf, dt, posicion):
-
-		self.tiempo.append(t)
+	
 		self.Posicion.append(posicion)
+		self.tiempo.append(t)
 
 		while t <= tf:
 
@@ -24,9 +23,9 @@ class Euler():
 			t += dt
 			self.tiempo.append(t)
 
-		R = lambda m: [self.Posicion[i][m] for i in range(len(self.Posicion))]
-
-		self.x = R(0); self.y = R(1); self.z = R(2)	
+		R = lambda m: [self.Posicion[i][m] for i in range(len(self.Posicion))]	
+	
+		return R(0), R(1), R(2)
 
 	def Metodo_Euler_Cromer(self, t, tf, dt, posicion, velocidad): 
 
