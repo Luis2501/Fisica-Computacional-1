@@ -11,10 +11,9 @@ from math import cos, sin, pi, tan, exp, sqrt
 
 class Sistema_fisico(Euler, Verlet, Runge_Kutta):
 
-	def __init__(self, Ecuaciones, Masa = None):
+	def __init__(self, Ecuaciones):
 
 		self.Ecuaciones = Ecuaciones 
-		self.masa = Masa
 		self.Posicion = []
 		self.Velocidad = []
 		self.tiempo = []
@@ -29,7 +28,10 @@ class Sistema_fisico(Euler, Verlet, Runge_Kutta):
 
 	def Ec_Diferencial(self, t=None, x=None, dx=None, y=None, dy=None, z=None, dz=None):
 
-		return array([float(eval(self.Ecuaciones[0])), float(eval(self.Ecuaciones[1])), float(eval(self.Ecuaciones[2]))])
+		Evaluacion = array([float(eval(self.Ecuaciones[0])), 
+				    float(eval(self.Ecuaciones[1])), 
+				    float(eval(self.Ecuaciones[2]))])
+		return Evaluacion
 
 	def Obtener_Momento(self):
 	
@@ -39,9 +41,4 @@ class Sistema_fisico(Euler, Verlet, Runge_Kutta):
 			self.P_z = (self.masa)*(self.V_z)
 		except:
 			print("La velocidad aún no se ha definido")
-
-class Sistema_electrico():
-
-	pass
-
 
