@@ -15,14 +15,15 @@ double Ecuacion_Dif(double y, double dy);
 
 int main(){
 
-	double t = 0, tf = 5, dt = 0.01;
-	double h = 100, g = 9.81;
+	double t = 0, tf = 30, dt = 0.01;
+	double l = 10, g = 9.81;
+	double pi = 3.141592653589793;
 
 	int N = (tf-t)/dt, i = 0;
 
 	double Posicion[N], Velocidad[N], tiempo[N];
 
-	Posicion[0] = h;
+	Posicion[0] = pi/8;
 	Velocidad[0] = 0;
 		
 	ofstream file_plot;
@@ -51,12 +52,12 @@ int main(){
 
 	FILE * vent = popen("gnuplot -persist","w");
 	fprintf(vent, "set grid \n"); 
-	fprintf(vent, "plot \"Solucion_C++.dat\" u 1:2 w l lw 3 title \"x(t)\" \n"); 
+	fprintf(vent, "plot \"Solucion_C++.dat\" u 1:2 w l lw 3 title \"theta (t)\" \n"); 
 		
 	return 0;
 }
 
 double Ecuacion_Dif(double y, double dy){
 
-	return -9.8;	
+	return -(9.81/10)*sin(y);	
 }
