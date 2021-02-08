@@ -11,9 +11,9 @@ import numpy as np
 
 class Caida_libre:
 
-	def __init__(self, gravedad):
+	def __init__(self, g):
 
-		self.g = gravedad
+		self.g = g
 
 	def __call__(self, u, t):
 
@@ -33,14 +33,17 @@ if __name__=="__main__":
 
 	solver = Euler(Sistema)
 	solver.condiciones_iniciales([100,0], [0,4], 0.01)
-	y,t = solver.SolveEDO()		
+	y,t = solver.Solve()		
 
 	solver1 = Verlet(Sistema)
 	solver1.condiciones_iniciales([100,0], [0,4], 0.01)
-	y1,t1 = solver.SolveEDO()	
+	y1,t1 = solver.Solve()
+	
+	help(SolveODE)
+	print("Error entre los métodos: ", np.mean(abs(y1[:,0] - y[:,0])*100))
 
 	plt.title("Caida libre")
-	plt.plot(t, y[:,0], label = r"$y(t)$")
+	plt.plot(t, y[:,0], label = r"Euler")
 	plt.plot(t1, y1[:,0], label = r"Verlet")
 	plt.xlabel(r"tiempo (s)") ; plt.ylabel(r"Posicion (m)")
 	plt.legend() ; plt.grid() ; plt.show()
