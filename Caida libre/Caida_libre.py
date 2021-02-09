@@ -27,23 +27,20 @@ if __name__=="__main__":
 	import matplotlib.pyplot as plt
 	import sys
 	sys.path.append("../")
-	from PhysicsPy.EDO import *
+	from PhysicsPy.ODEsMethods import *
 
 	Sistema = Caida_libre(9.8)
 
 	solver = Euler(Sistema)
-	solver.condiciones_iniciales([100,0], [0,4], 0.01)
-	y,t = solver.Solve()		
+	solver.InitialConditions([100,0], [0,4], 0.01)
+	y,t = solver.SolveODE()			
 
-	solver1 = Verlet(Sistema)
-	solver1.condiciones_iniciales([100,0], [0,4], 0.01)
-	y1,t1 = solver.Solve()
+	solver1 = Euler_Cromer(Sistema)
+	solver1.InitialConditions([100,0], [0,4], 0.01)
+	y1,t1 = solver1.SolveODE()	
 	
-	help(SolveODE)
-	print("Error entre los métodos: ", np.mean(abs(y1[:,0] - y[:,0])*100))
-
-	plt.title("Caida libre")
-	plt.plot(t, y[:,0], label = r"Euler")
-	plt.plot(t1, y1[:,0], label = r"Verlet")
+	plt.title("Movimiento en caida libre")
+	plt.plot(t, y[:,0], label = r"$y(t)$")
+	plt.plot(t1, y1[:,0], label = r"$y(t)$")
 	plt.xlabel(r"tiempo (s)") ; plt.ylabel(r"Posicion (m)")
 	plt.legend() ; plt.grid() ; plt.show()
