@@ -31,18 +31,10 @@ class Euler_Cromer(ODESolve):
 
 		u, f, i, t = self.U, self.f, self.i, self.t
 		dt = t[i + 1] - t[i]
+	
+		a = f(u[i,:], t[i])			
 
-		if self.numero_eqns_dif == 2:
-			
-			a = f(u[i,:], t[i])
-			v = u[i,1] + dt*a[i,1]
-			r = u[i,0] + dt*v
-
-			return [r,v]
-
-		else:
-
-			raise "NotImplementedError"
+		return np.array([u[i,0] + dt*(u[i,1] + dt*a[1]), u[i,1] + dt*a[1]])
 
 class Verlet(ODESolve):
 
@@ -58,7 +50,7 @@ class Verlet(ODESolve):
 		u, f, i, t = self.U, self.f, self.i, self.t
 		dt = t[i + 1] - t[i]
 
-		if self.i == 0:
+		if i == 0:
 
 			return u[i, :] + f(u[i,:], t[i])*dt 
 

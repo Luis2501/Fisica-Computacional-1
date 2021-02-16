@@ -31,16 +31,16 @@ if __name__=="__main__":
 
 	Sistema = Caida_libre(9.8)
 
-	solver = Euler(Sistema)
-	solver.InitialConditions([100,0], [0,4], 0.01)
-	y,t = solver.SolveODE()			
+	#solver = Euler(Sistema)
+	#solver.InitialConditions([100,0], [0,4], 0.01)
+	#y,t = solver.SolveODE()			
 
 	solver1 = Euler_Cromer(Sistema)
 	solver1.InitialConditions([100,0], [0,4], 0.01)
 	y1,t1 = solver1.SolveODE()	
 	
 	plt.title("Movimiento en caida libre")
-	plt.plot(t, y[:,0], label = r"$y(t)$")
+	#plt.plot(t, y[:,0], label = r"$y(t)$")
 	plt.plot(t1, y1[:,0], label = r"$y(t)$")
 	plt.xlabel(r"tiempo (s)") ; plt.ylabel(r"Posicion (m)")
 	plt.legend() ; plt.grid() ; plt.show()

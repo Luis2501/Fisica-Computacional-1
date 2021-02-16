@@ -15,7 +15,7 @@ def Edit():
 	"""))
 
 
-	jtplot.style(theme= 'onedork')
+	jtplot.style(theme= 'grade3')
 	jtplot.style(figsize = (10,10))
 	
 	sys.path.append("../")
