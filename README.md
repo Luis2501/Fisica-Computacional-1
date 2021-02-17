@@ -1,7 +1,14 @@
 # Fisica Computacional 1  
 
-Programas de la clase física computacional 1.  
+Este repositorio contiene programas de la clase Física Computacional 1.  
  
-Facultad de Ciencias Físico Matemáticas, UAdeC.
+Los programas están hechos en Python. Para correr los programas 
 
-Cada tema cuenta con un script y un GIF de simulación.
+"""
+python3 nombreprograma.py
+"""
+
+Los programas hasta el momento requieren del paquete **PhysicsPy** que se encuentra en este 
+repositorio para poder ejecutarse.
+
+Facultad de Ciencias Físico Matemáticas, UAdeC.
