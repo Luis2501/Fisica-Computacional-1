@@ -14,25 +14,22 @@ import numpy as np
 
 class Tiro_Parabolico:
 
-	def __init__(self, v, g):
+	def __init__(self, v, g, friccion = False):
 
-		"""
-		Sistema de ecuaciones diferenciales
-
-		dx/dt = v_x		
-		dv_x/dt = 0
-		dy/dt = v_y
-		dv_y/dt = -g		
-		"""
-
-		self.v, self.g = v, g
+		self.v, self.g, self.friccion = v, g, friccion
 
 	def __call__(self, u, t):
 
 		x, vx, y, vy = u 
 		g = self.g
 
-		return np.array([vx, 0, vy, -g]) 
+		if self.friccion == True
+
+			return np.array([vx, -B*v*vx, vy, -g - B*v*vy])
+
+		else:
+
+			return np.array([vx, 0, vy, -g]) 
 
 
 if __name__=="__main__":
