@@ -10,13 +10,6 @@ from PhysicsPy.ODEsSolver import ODESolve
 import numpy as np
 
 class Euler(ODESolve):
-	
-	"""
-	Euler method is for solve equation diferential system. The Euler
-	method is the form
-
-	u[i + 1] = u[i] + f(u[i],t[i])*dt
-	"""
 
 	def advance(self):
 
@@ -30,33 +23,14 @@ class Euler_Cromer(ODESolve):
 	def advance(self):
 
 		u, f, i, t = self.U, self.f, self.i, self.t
-		dt = t[i + 1] - t[i]
-	
-		a = f(u[i,:], t[i])			
+		dt,k = t[i + 1] - t[i], int(self.numero_coord)
 
-		return np.array([u[i,0] + dt*(u[i,1] + dt*a[1]), u[i,1] + dt*a[1]])
+		#v = u[i,1] + dt*f(u[i, :], t[i])[1]
+		#x = u[i,0] + dt*v
 
-class Verlet(ODESolve):
+		#return 	np.array([x,v])	
 
-	"""
-	Verlet method is for solve equation diferential. The Verlet
-	method is the form
-	
-	u[i + 1] = 2*u[i] - u[i - 1] + f(u[i, t[i])*dt**2
-	"""
-
-	def advance(self):
-
-		u, f, i, t = self.U, self.f, self.i, self.t
-		dt = t[i + 1] - t[i]
-
-		if i == 0:
-
-			return u[i, :] + f(u[i,:], t[i])*dt 
-
-		else:
-
-			return 2*(u[i,:]) - u[i-1, :] + f(u[i,:] , t[i])*(dt**2)
+		return u[i, :] + dt * f(u[i+1, :], t[i])
 
 class Runge_Kutta(ODESolve):
 

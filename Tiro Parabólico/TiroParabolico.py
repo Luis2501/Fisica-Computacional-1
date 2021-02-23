@@ -63,7 +63,7 @@ if __name__=="__main__":
 
 		CondInit = [0, v*cos(theta*pi/180), 0, v*sin(theta*pi/180)]
 
-		Solucion.InitialConditions(CondInit, [0,120], 0.1)		#Definición de condiciones inciales
+		Solucion.InitialConditions(CondInit, [0,120], 0.01)		#Definición de condiciones inciales
 		u,t = Solucion.SolveODE()					#Solución numérica en forma de matriz
 
 		#Gráfica altura vs alcance
@@ -88,5 +88,7 @@ if __name__=="__main__":
 	ticks_y = ticker.FuncFormatter(lambda x, pos: "{:.1f}".format(x/1e3))	
 	ax1.yaxis.set_major_formatter(ticks_y)	
 	
+	print(u)
+
 	fig.tight_layout()
 	plt.show()	

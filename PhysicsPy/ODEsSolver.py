@@ -11,17 +11,9 @@ import numpy as np
 
 class ODESolve():
 
-	"""
-	Solves ODE on the form:
-	
-	u' = f(u,t)
+	def __init__(self, f, System = True):
 
-	with of initial condition u(t0) = U0
-	"""
-
-	def __init__(self, f):
-
-		self.f = f
+		self.f, self.System = f, System
 
 	def __str__(self):
 
@@ -31,14 +23,7 @@ class ODESolve():
 			Number equations is: {self.numero_eqns_dif} 
 			"""
 
-	def InitialConditions(self, U0, Deltat, dt, System = True):
-
-		"""
-		U0 is initial condition 
-		U0 = [u_1, u_2, ... ,u_n] 
-		"""
-
-		self.System = System
+	def InitialConditions(self, U0, Deltat, dt,):
 	
 		self.N = int((Deltat[1]-Deltat[0])/dt)
 		self.t = np.linspace(Deltat[0], Deltat[1], self.N +1)
@@ -47,6 +32,7 @@ class ODESolve():
 	
 			self.numero_eqns_dif = 1
 			self.numero_coord = 1
+
 			U0 = float(U0)
 
 		else:
@@ -67,23 +53,13 @@ class ODESolve():
 
 	def SolveODE(self):
 
-		"""
-		This function is for integration,  
-
-		u[i + 1] = advance
-
-		the advance is a method for solve EDO.
-		"""
-
-		self.U = np.zeros((len(self.t), (self.numero_eqns_dif)*(self.numero_coord)))
-
+		self.U = np.zeros((len(self.t), (self.numero_coord)*(self.numero_eqns_dif)))
+			
 		self.U[0,:] = self.U0
-
+	
 		#Integration	
 		for i in range(self.N):
 			self.i = i 
 			self.U[i + 1] = self.advance()
 
 		return self.U, self.t
-
-
