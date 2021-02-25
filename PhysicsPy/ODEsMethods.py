@@ -23,14 +23,21 @@ class Euler_Cromer(ODESolve):
 	def advance(self):
 
 		u, f, i, t = self.U, self.f, self.i, self.t
-		dt,k = t[i + 1] - t[i], int(self.numero_coord)
+		dt, k = t[i + 1] - t[i], self.NumCoor
 
-		#v = u[i,1] + dt*f(u[i, :], t[i])[1]
-		#x = u[i,0] + dt*v
+		if k == 1.0:
 
-		#return 	np.array([x,v])	
+			x2 = u[i,1] + dt*(f(u[i, :], t[i])[1])
+			x1 = u[i,0] + dt*x2
 
-		return u[i, :] + dt * f(u[i+1, :], t[i])
+			return np.array([x1,x2])
+
+		else: 
+
+			x2 = u[i,k:] + dt*(f(u[i, :], t[i])[k:]) 
+			x1 = u[i,:k] + dt*x2
+		
+			return np.concatenate((x1, x2))
 
 class Runge_Kutta(ODESolve):
 
