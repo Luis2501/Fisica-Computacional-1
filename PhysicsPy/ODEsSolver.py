@@ -63,8 +63,6 @@ class ODESolve():
 			 
 		self.U[0,:] = self.U0 
 
-		print(self.U)
-
 		#Integration	
 		for i in range(self.N):
 			self.i = i 
