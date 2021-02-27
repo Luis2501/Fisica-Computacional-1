@@ -15,4 +15,6 @@ repositorio para poder ejecutarse.
 
 [Decaimiento radiactivo](https://luis2501.github.io/Programas/Decaimiento-Radiactivo.html)
 
+[Péndulo Simple](https://luis2501.github.io/Programas/Pendulo-Simple.html)
+
 Facultad de Ciencias Físico Matemáticas, UAdeC.
