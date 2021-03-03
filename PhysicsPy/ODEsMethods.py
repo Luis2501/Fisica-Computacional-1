@@ -25,7 +25,7 @@ class Euler_Cromer(ODESolve):
 		u, f, i, t = self.U, self.f, self.i, self.t
 		dt, k = t[i + 1] - t[i], self.NumCoor
 
-		if k == 1.0:
+		if k == 1:
 
 			x2 = u[i,1] + dt*(f(u[i, :], t[i])[1])
 			x1 = u[i,0] + dt*x2
