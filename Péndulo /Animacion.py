@@ -13,7 +13,8 @@ Pagina web personal: https://luis2501.github.io/Programas/Pendulo-Simple.html
 """
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
-from Pendulo import Pendulo
+from Pendulo_Simple import Pendulo
+from Pendulo_Amortiguado import Pendulo_Amortiguado
 import numpy as np
 
 def update(i):
@@ -30,7 +31,8 @@ if __name__ == "__main__":
 	sys.path.append("../")
 	from PhysicsPy.ODEsMethods import *
 
-	Sistema = Pendulo(9.81,1,1)						#Pendulo con l=1, g=9.81m/s², m= 1 kg
+	#Sistema = Pendulo(9.81,1,1)						#Pendulo con l=1, g=9.81m/s², m= 1 kg
+	Sistema = Pendulo_Amortiguado(9.81,1,1,1)
 		
 	#Solucion = Euler(Sistema)						#Instancia en el método de Euler
 	Solucion = Euler_Cromer(Sistema, System = False)			#Instancia en el método de Euler-Cromer	
@@ -41,5 +43,5 @@ if __name__ == "__main__":
 	ax = fig.gca()
 	
 	ani = animation.FuncAnimation(fig, update, range(len(t)), interval = 1)
-	ani.save("Pendulo_EulerCromer.mp4", fps= 20)				#Este comando guarda la animación
+	#ani.save("Pendulo_EulerCromer.mp4", fps= 20)				#Este comando guarda la animación
 	plt.show()

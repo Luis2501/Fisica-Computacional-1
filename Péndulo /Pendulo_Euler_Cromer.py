@@ -41,6 +41,8 @@ if __name__ == "__main__":
 	sys.path.append("../")
 	from PhysicsPy.ODEsMethods import *
 
+	#plt.style.use('./old-style.mplstyle')
+
 	Sistema = Pendulo(9.81, 1, 1)						#Instancia en la clase Pendulo (l=1 m, g= 9.81 m/s²)
 	
 	Solucion = Euler_Cromer(Sistema, System = False)			#Instancia en la clase Euler-Cromer	

@@ -52,3 +52,23 @@ class Runge_Kutta(ODESolve):
         	K4 = dt * f(u[i, :] + K3, t[i] + dt)
 
 	        return u[i, :] + (1 / 6) * (K1 + 2 * K2 + 2 * K3 + K4)
+
+class Verlet(ODESolve):
+
+	"""
+	Solucionar bien
+	"""
+
+	def advance(self):
+
+		u, f, i, t = self.U, self.f, self.i, self.t
+		dt = t[i + 1] - t[i]
+
+		if i == 0: 
+
+			return u[i, :] + dt * f(u[i, :], t[i])
+
+		else: 
+
+			return 2*u[i,:] - u[i-1,:] + f(u[i, :], t[i])*(dt**2)		
+
