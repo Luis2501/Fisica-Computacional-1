@@ -8,7 +8,6 @@ Física Computacional
 
 vie 12 feb 2021 09:09:59 CST 
 """
-
 import numpy as np
 
 class MRU:

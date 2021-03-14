@@ -2,16 +2,23 @@ import numpy as np
 
 class RC_Circuit:
 
-	def __init__(self, R, C):
+	def __init__(self, R, C, L, Serie = True):
 
-		self.R, self.C = R, C
+		self.R, self.C, self.L = R, C, L
+		self.Serie = Serie
 
 	def __call__(self, u, t):
 
-		v = u
-		R, C = self.R, self.C 
+		i, di = u
+		R, C, L = self.R, self.C, self.L 
 
-		return -v * (1/(R*C))
+		if self.Serie: 
+
+			return np.array([di, -((R*di)/(L)) - ((i)/(L*C)) ])
+
+		else: 
+
+			return 0
 
 if __name__ == "__main__":
 
@@ -26,6 +33,6 @@ if __name__ == "__main__":
 	Solucion.InitialConditions(1.4, [0,22e-3], 1e-6)
 	V, t = Solucion.SolveODE()
 
+	plt.title("Circuito RLC")
 	plt.plot(t, V[:,0])
-	plt.grid() 
-	plt.show()
+	plt.grid() ; plt.show()

@@ -55,10 +55,6 @@ class Runge_Kutta(ODESolve):
 
 class Verlet(ODESolve):
 
-	"""
-	Solucionar bien
-	"""
-
 	def advance(self):
 
 		u, f, i, t = self.U, self.f, self.i, self.t
@@ -70,5 +66,5 @@ class Verlet(ODESolve):
 
 		else: 
 
-			return 2*u[i,:] - u[i-1,:] + f(u[i, :], t[i])*(dt**2)		
-
+			return 2*u[i,:] - u[i-1,:] + f(u[i, :], t[i])*(dt**2)
+	

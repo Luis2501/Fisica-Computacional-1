@@ -52,12 +52,11 @@ if __name__ == "__main__":
 	K, U, E = Sistema.Energy(theta)						#Energía del sistema (solo si se requiere) 
 
 	plt.title("Movimiento del péndulo simple")
-	plt.plot(t, theta[:,0], label=r"$\theta$ (t)")				#Graficamos theta vs tiempo	
+	plt.plot(t, theta[:,0], label=r"$\theta$ (t)")				#Graficamos theta vs tiempo		
 	#plt.plot(t, E, label = "Enegía total")	
 	#plt.plot(t, K, label = "Enegía cinética")
 	#plt.plot(t, U, label = "Energía potencial")	
 
 	plt.xlabel("tiempo (s)") ; plt.ylabel(r"$\theta$ (rad)")		
 	plt.grid(True) ; plt.legend()
-	#plt.savefig("Avst.png")
 	plt.show()

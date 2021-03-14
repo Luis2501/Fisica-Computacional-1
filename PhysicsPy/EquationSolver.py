@@ -5,7 +5,19 @@ class EquationsSolver:
 
 	def __init__(self, f, df = None):
 
-		self.f, self.df = f, df
+		self.df = df
+
+		if isinstance(f, (int, float)):
+
+			self.f = lambda x: f 
+
+		elif callable(f): 
+
+			self.f = f
+
+		else: 
+
+			raise Exception("La función no fue definida")
 
 	def InitialCondition(self, x0, tol, maxiter = None):
 

@@ -29,14 +29,15 @@ def Legendre(x, n):
 
 	else:
 
-		return  (2*n + 1)*x*Legendre(x, n+1) - n*Legendre(x,n-1)
+		return  (( x*(1+ 2*(n-1))*Legendre(x, n - 1) - (n-1)*Legendre(x, n - 2) )/(n))
 	 
 
 x = np.linspace(-1,1,1001)
 
-#for i in range(5):
+for i in range(6):
 
-plt.plot(x, Legendre(x,5))
+	plt.plot(x, Legendre(x, i), label = f"$P_{i}$")
 
-plt.grid()
+plt.title("Polinomios de Legendre")
+plt.grid() ; plt.legend()
 plt.show()
