@@ -107,7 +107,7 @@ def df(x):
 if __name__ == "__main__":
 
 	Solucion = Biseccion(f)
-	Solucion.InitialCondition([0, 3], 1e-6)
+	Solucion.InitialCondition(3, 1e-6)
 	x = Solucion.Solve()
 	
 	Solucion1 = Newton_Rhapson(f, df)
