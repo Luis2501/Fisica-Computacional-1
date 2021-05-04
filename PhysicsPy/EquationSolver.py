@@ -96,22 +96,35 @@ class Newton_Rhapson(EquationsSolver):
 
 		raise RuntimeError(f"No hubo convergencia después de {maxiter} iteraciones")
 
-def f(x):
+class Secant(EquationsSolver):
 
-	return x**3 - 5
+	def Solve(self):
 
-def df(x):
+		f, maxiter, tol = self.f, self.maxiter, self.tol 
+		a, b = self.x0	
 
-	return 3*x**2 
+		i = 0
 
-if __name__ == "__main__":
+		while i < maxiter:
+			
+			try: 
+		
+				x = b - float(f(b))/(float(f(b) - f(a))/(b - a))
 
-	Solucion = Biseccion(f)
-	Solucion.InitialCondition(3, 1e-6)
-	x = Solucion.Solve()
-	
-	Solucion1 = Newton_Rhapson(f, df)
-	Solucion1.InitialCondition(3, 1e-6, maxiter = 1000)
-	x1 = Solucion1.Solve()
-	
-	print(x, x1)
+				er = abs(x-b)/abs(x)
+
+			except ZeroDivisionError:
+
+				print("Error en el denominador, para x = ", x)
+
+				break
+
+			if er < tol:
+
+				return x
+
+			a = b
+			b = x
+			i += 1
+    		
+		return x

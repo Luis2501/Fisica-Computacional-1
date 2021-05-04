@@ -1,3 +1,11 @@
+"""
+Luis Eduardo Sánchez González
+
+Universidad Autonoma de Coahuila
+Facultad de Ciencias Físico Matemáticas
+
+mié 03 feb 2021 13:10:46 CST 
+"""
 import numpy as np
 
 class Integration:
@@ -26,9 +34,7 @@ class Integration:
 		self.x = np.linspace(self.a, self.b, self.N + 1)
 		self.S = np.zeros(self.N)
 
-		self.S[0] = self.f(self.a)*self.dx
-
-		for i in range(1, self.N):
+		for i in range(self.N):
 
 			self.i = i
 
@@ -41,25 +47,81 @@ class Riemann(Integration):
 
 	def advance(self):
 					
-		f, x, i = self.f, self.x, self.i		
+		f, x, i, a = self.f, self.x, self.i, self.a		
 		dx = x[i +1] - x[i]
 
-		return f(x[i +1])*dx
-						
+		if i == 0:
+	
+			return f(a)*dx
 
-class Monte_Carlo:
+		else:
+
+			return f(x[i])*dx
+						
+class Midpoint(Integration):
 
 	def advance(self):
 
-		pass
+		f, x, i, a = self.f, self.x, self.i, self.a		
+		dx = x[i +1] - x[i]
 
+		return dx*f((a + dx/2.0) + i*dx)
 
-def f(x):
-	return 2*x
+class Trapeze(Integration):
 
-Integral = Riemann(f)
+	def advance(self):
 
-Integral.Limits(1,0,0.0001)
-print(Integral.Solve())
+		f, x, i = self.f, self.x, self.i		
+		a, b = self.a, self.b		
+		dx = x[i +1] - x[i]
 
-			
+		if  i == 0:
+
+			return 0.5*(f(a) + f(b))*dx
+
+		else: 
+
+			return f(x[i])*dx 
+
+class Simpson1_3(Integration):
+
+	def advance(self):
+
+		f, x, i = self.f, self.x, self.i		
+		a, b = self.a, self.b		
+		dx = x[i +1] - x[i]
+
+		if i == 0:
+
+			return (f(a) + f(b))*(dx/3)
+		else: 
+
+		        if i%2 == 0 :
+	
+            			return 2*f(x[i])*(dx/3)
+ 
+        		else:
+
+           			return 4*f(x[i])*(dx/3)
+
+class Simpson3_8(Integration):
+
+	def advance(self):
+
+		f, x, i = self.f, self.x, self.i		
+		a, b = self.a, self.b		
+		dx = x[i +1] - x[i]
+
+		if i == 0:
+
+			return (f(a)+f(b))*3*(dx/8)
+  
+		else: 
+
+			if i%3 == 0 : 
+
+				return 2*f(x[i])*3*(dx/8)
+			else:
+
+				return 3*f(x[i])*3*(dx/8)        
+
