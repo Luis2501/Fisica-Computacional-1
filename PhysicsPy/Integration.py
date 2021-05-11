@@ -125,3 +125,16 @@ class Simpson3_8(Integration):
 
 				return 3*f(x[i])*3*(dx/8)        
 
+class Monte_Carlo(Integration):
+
+	def Solve(self):
+
+		f, N = self.f, self.N		
+		a, b = self.a, self.b
+
+		x = a + (b - a)*np.random.random(N)
+		y = f(a) + (f(b) - f(a))*np.random.random(N)
+
+		Num_In = len(np.where(y <= f(x))[0])
+	
+		return Num_In/N
