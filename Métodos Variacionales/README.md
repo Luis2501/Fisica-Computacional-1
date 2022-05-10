@@ -1,25 +1,25 @@
-**Intrucciones para App Fermat**
+# Intrucciones para App Fermat
 
 En la parte superior de la ventana aparece un menú barra, en el cual se encuentran 
 los siguientes procesos:
 
-- Start: 
+- **Start:** 
 
 	Inicia el proceso de buscar un LCO lo más corta posible.
 	
-- Clean
+- **Clean:**
 
 	Limpia la gráfica y la deja como se encontraba en un inicio.
 	
-- Snell's Law
+- **Snell's Law:**
 
 	Por medio de los datos con los que cuenta el programa, verifica la ley de Snell.
 	
-- Final Graph
+- **Final Graph:**
 
 	Muestra la gráfica final del proceso.
 	
-- Exit
+- **Exit:**
 
 	Cierra la aplicación. 
 
