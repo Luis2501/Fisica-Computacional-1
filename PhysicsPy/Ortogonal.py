@@ -1,23 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#class Orthogonal_Polinomyals:
-
-def Hermite(x2, n):
+def H(x, n):
 
 	if n==0:
 
-		return np.ones(len(x2))
+		return np.ones(len(x))
     
 	elif n==1:
 
-		return 2*x2
+		return 2*x
 
 	else:
 
-		return 2*x2*Hermite(x2,n-1)-2*(n-1)*Hermite(x2,n-2)
+		return 2*x*H(x,n-1)-2*(n-1)*H(x,n-2)
 
-def Legendre(x, n):
+def P(x, n):
 
 	if n == 0: 
 
@@ -29,15 +27,15 @@ def Legendre(x, n):
 
 	else:
 
-		return  (( x*(1+ 2*(n-1))*Legendre(x, n - 1) - (n-1)*Legendre(x, n - 2) )/(n))
+		return  (( x*(1+ 2*(n-1))*P(x, n - 1) - (n-1)*P(x, n - 2) )/(n))
 	 
 
-x = np.linspace(-1,1,1001)
+x = np.linspace(-2,2,1001)
 
 for i in range(6):
-
-	plt.plot(x, Legendre(x, i), label = f"$P_{i}$")
-
+    
+    plt.plot(x, H(x,i), label=f"$P_{i}$")
+    
 plt.title("Polinomios de Legendre")
 plt.grid() ; plt.legend()
 plt.show()

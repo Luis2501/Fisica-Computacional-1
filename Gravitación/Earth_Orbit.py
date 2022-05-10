@@ -38,7 +38,8 @@ if __name__ == "__main__":
 	from PhysicsPy.ODEsMethods import *
 	
 	Earth = Orbit()									#Definimos el objeto Tierra
-	Solution = Euler_Cromer(Earth, System = False)					#Instancia en la clase Euler-Cromer
+	
+	Solution = method(Earth, System = False)					#Instancia en la clase Euler-Cromer
 
 	Condition = [[1,       0], 							#Posición (x,y)  
 		     [0, 2*np.pi]]							#Velocidad (Vx, Vy)
@@ -49,7 +50,8 @@ if __name__ == "__main__":
 	u, t = Solution.SolveODE()							#Obtenemos la solución 					
 
 	#Gráfica de la órbita
+	plt.style.use("seaborn")
 	plt.title("Órbita de la Tierra")
-	plt.plot(u[:,0], u[:,1])
+	plt.plot(u[:,0], u[:,1], label = name)
 	plt.xlabel("$x$ (AU)") ; plt.ylabel("$y$ (AU)")
-	plt.grid() ; plt.show()
+	plt.grid(True) ; plt.show()

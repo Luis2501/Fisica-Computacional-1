@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
 	Sistema = Pendulo(9.81, 1, 1)						#Instancia en la clase Pendulo (l=1 m, g= 9.81 m/s²)
 	
-	for i in range(15,55,10):
+	for i in range(55,95,10):
 
 		Solucion = Euler_Cromer(Sistema, System = False)			#Instancia en la clase Euler-Cromer	
 		Solucion.InitialConditions([np.radians(i),0], [0,10], 0.001)		#Aplicamos condiciones inciales		

@@ -37,7 +37,7 @@ if __name__ == "__main__":
 		Sistema = Pendulo_Amortiguado(9.81, 1, 1, q)			#Instancia en la clase Pendulo (l=1 m, g= 9.81 m/s²)
 	
 		Solucion = Euler_Cromer(Sistema, System = False)		#Instancia en la clase Euler-Cromer	
-		Solucion.InitialConditions([np.pi/18,0], [0,10], 0.001)		#Aplicamos condiciones inciales		
+		Solucion.InitialConditions([np.pi/18,0], [0,10], 0.001)		#Aplicamos condiciones inciales 		
 		theta,t = Solucion.SolveODE()					#Soluciones (ángulo = theta[:,0], velocidad = [:,1])
 
 		plt.plot(t, theta[:,0], label=r"$q = $" + f"{q}")		#Graficamos theta vs tiempo

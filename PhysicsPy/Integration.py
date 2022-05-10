@@ -48,7 +48,7 @@ class Riemann(Integration):
 	def advance(self):
 					
 		f, x, i, a = self.f, self.x, self.i, self.a		
-		dx = x[i +1] - x[i]
+		dx = x[i+1] - x[i]
 
 		if i == 0:
 	
@@ -132,9 +132,12 @@ class Monte_Carlo(Integration):
 		f, N = self.f, self.N		
 		a, b = self.a, self.b
 
-		x = a + (b - a)*np.random.random(N)
-		y = f(a) + (f(b) - f(a))*np.random.random(N)
+		self.x = a + (b - a)*np.random.random(N)
+		self.y = f(a) + (f(b) - f(a))*np.random.random(N)
 
-		Num_In = len(np.where(y <= f(x))[0])
+		self.area = len(np.where(self.y <= f(self.x))[0])/N
+
+		self.In = np.where(self.y < f(self.x), self.y, None) 		
+		self.Out = np.where(self.y >= f(self.x), self.y, None)
 	
-		return Num_In/N
+		return self.area

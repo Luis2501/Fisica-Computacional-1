@@ -67,7 +67,7 @@ if __name__ == "__main__":
 		      	"Diameter" : [0.134,  8.1e-3, 8.1e-3, 4.5e-3, 0.095, 0.08], 
 			"Perihelio" :  [0, 0.718, 0.98, 1.38, 4.95, 9.05],
 			"Afelio" : [0, 0.728, 1.1, 1.66, 5.46, 10.12],
-		      	"Period" : [0, 0.61, 1, 1.88, 11.86, 29.47], 
+		      	"Time" : [0, 0.61, 1, 1.88, 11.86, 29.47], 
 		      	"Colors": ["#ffff00", "#d23100", "#325bff", "#b20000", "#ebebd2", "#ebcd82"] } 		
 
 	#Creamos el Sol
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 		trace = Create_Planet(Solar_System["Diameter"][i], Solar_System["Colors"][i], 
 				      Solar_System["Perihelio"][i], Solar_System["Planets"][i] )
 
-		Get_Orbit(Solar_System["Planets"][i], Solar_System["Radius"][i], Solar_System["Period"][i],
+		Get_Orbit(Solar_System["Planets"][i], Solar_System["Radius"][i], Solar_System["Time"][i],
 			  Solar_System["Perihelio"][i], Solar_System["Afelio"][i])
 
 		Data.append(trace)

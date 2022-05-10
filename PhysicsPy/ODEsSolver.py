@@ -6,7 +6,6 @@ Facultad de Ciencias Físico Matemáticas
 
 mié 03 feb 2021 13:10:46 CST 
 """
-
 import numpy as np
 
 class ODESolve():
@@ -43,7 +42,14 @@ class ODESolve():
 				try: 
 
 					self.NumCoor = len(U0[0])
-					U0 = np.concatenate((U0[0], U0[1]))
+					
+					U = []	
+					
+					for i in range(self.NumEqns):
+					
+						U.append(U0[i])
+					
+					U0 = np.concatenate(tuple(U))
 
 				except:
 			
